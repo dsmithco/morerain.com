@@ -44,14 +44,36 @@
               <stop offset="1"   stop-color="#8ca9bf"/>
             </linearGradient>
             <clipPath id="box"><rect x="0" y="0" width="1000" height="440"/></clipPath>
+
+            <!-- one seamless tile of rain (550 user-units tall, repeated and scrolled) -->
+            <g id="raintile" stroke="#ece2cb" stroke-width="2" opacity="0.5" stroke-linecap="round">
+              <path d="M40 10 l-12 50"/>  <path d="M120 60 l-12 50"/>  <path d="M200 20 l-12 50"/>
+              <path d="M300 80 l-12 50"/> <path d="M380 30 l-12 50"/>  <path d="M470 70 l-12 50"/>
+              <path d="M560 15 l-12 50"/> <path d="M650 90 l-12 50"/>  <path d="M740 25 l-12 50"/>
+              <path d="M820 75 l-12 50"/> <path d="M910 35 l-12 50"/>  <path d="M980 60 l-12 50"/>
+              <path d="M70 160 l-12 50"/> <path d="M160 210 l-12 50"/> <path d="M250 170 l-12 50"/>
+              <path d="M350 230 l-12 50"/><path d="M440 180 l-12 50"/> <path d="M540 220 l-12 50"/>
+              <path d="M630 165 l-12 50"/><path d="M720 225 l-12 50"/> <path d="M810 175 l-12 50"/>
+              <path d="M900 215 l-12 50"/><path d="M980 190 l-12 50"/>
+              <path d="M30 310 l-12 50"/> <path d="M130 360 l-12 50"/> <path d="M220 320 l-12 50"/>
+              <path d="M320 380 l-12 50"/><path d="M420 330 l-12 50"/> <path d="M520 370 l-12 50"/>
+              <path d="M620 315 l-12 50"/><path d="M710 375 l-12 50"/> <path d="M800 325 l-12 50"/>
+              <path d="M900 365 l-12 50"/><path d="M970 340 l-12 50"/>
+              <path d="M60 460 l-12 50"/> <path d="M150 510 l-12 50"/> <path d="M250 470 l-12 50"/>
+              <path d="M360 520 l-12 50"/><path d="M460 480 l-12 50"/> <path d="M560 520 l-12 50"/>
+              <path d="M660 470 l-12 50"/><path d="M760 515 l-12 50"/> <path d="M860 475 l-12 50"/>
+              <path d="M950 510 l-12 50"/>
+            </g>
           </defs>
 
           <g clip-path="url(#box)">
             <rect width="1000" height="440" fill="url(#sky)"/>
 
             <!-- sun -->
-            <circle cx="500" cy="150" r="74" fill="#e3b24a"/>
-            <circle cx="500" cy="150" r="74" fill="none" stroke="#5e2316" stroke-width="2" opacity="0.5"/>
+            <g class="sun">
+              <circle cx="500" cy="150" r="74" fill="#e3b24a"/>
+              <circle cx="500" cy="150" r="74" fill="none" stroke="#5e2316" stroke-width="2" opacity="0.5"/>
+            </g>
 
             <!-- far ridge -->
             <path d="M0 250 L150 215 L300 245 L430 205 L560 240 L720 200 L880 238 L1000 215 L1000 440 L0 440 Z"
@@ -89,18 +111,14 @@
               <use href="#pine" x="980" y="300" transform="scale(1.05)"/>
             </g>
 
-            <!-- rain -->
-            <g stroke="#ece2cb" stroke-width="2" opacity="0.55" stroke-linecap="round">
-              <path d="M60 30 L40 110"/>   <path d="M140 10 L120 90"/>
-              <path d="M230 40 L210 120"/> <path d="M320 15 L300 95"/>
-              <path d="M780 25 L760 105"/> <path d="M860 45 L840 125"/>
-              <path d="M930 18 L910 98"/>  <path d="M690 35 L670 115"/>
-              <path d="M120 150 L100 230"/><path d="M250 170 L230 250"/>
-              <path d="M820 160 L800 240"/><path d="M910 180 L890 260"/>
+            <!-- animated rain: two stacked copies of the tile, scrolled downward -->
+            <g class="rain">
+              <use href="#raintile" y="-550"/>
+              <use href="#raintile"/>
             </g>
 
             <!-- birds -->
-            <g stroke="#16100b" stroke-width="2.5" fill="none" stroke-linecap="round">
+            <g class="birds" stroke="#16100b" stroke-width="2.5" fill="none" stroke-linecap="round">
               <path d="M740 80 q10 -9 20 0 q10 -9 20 0"/>
               <path d="M800 110 q7 -6 14 0 q7 -6 14 0"/>
             </g>

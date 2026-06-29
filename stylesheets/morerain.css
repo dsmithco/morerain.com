@@ -129,6 +129,29 @@ body {
   background: #1c1712;
 }
 
+/* ---- scene animation ---- */
+/* rain: scroll the two stacked tiles down by exactly one tile height (550) */
+.scene .rain { animation: mr-rainfall 1.3s linear infinite; will-change: transform; }
+@keyframes mr-rainfall {
+  from { transform: translateY(0); }
+  to   { transform: translateY(550px); }
+}
+/* birds: gentle drifting bob */
+.scene .birds { animation: mr-bob 5s ease-in-out infinite; }
+@keyframes mr-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+/* sun: soft breathing glow */
+.scene .sun { transform-box: fill-box; transform-origin: center; animation: mr-glow 7s ease-in-out infinite; }
+@keyframes mr-glow {
+  0%, 100% { opacity: 0.9;  transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.035); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scene .rain, .scene .birds, .scene .sun { animation: none; }
+}
+
 /* ============================ SECTIONS ==================== */
 section { position: relative; }
 
