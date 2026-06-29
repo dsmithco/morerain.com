@@ -24,109 +24,25 @@
   </head>
 
   <body>
+    <!-- cinematic pixel-art background -->
+    <div class="cine" aria-hidden="true">
+      <canvas id="pixelbg" width="240" height="135"></canvas>
+      <div class="cine__grade"></div>
+      <div class="cine__scan"></div>
+      <div class="cine__vignette"></div>
+      <div class="cine__grain"></div>
+    </div>
+
     <div class="frame" aria-hidden="true"></div>
 
     <!-- ============================ HERO ===================== -->
-    <header class="hero">
+    <header class="hero hero--cine">
       <div class="wrap">
         <p class="kicker">Free&nbsp;·&nbsp;Acoustic&nbsp;·&nbsp;Worship</p>
         <h1 class="title">More<span class="line2">Rain</span></h1>
-        <p class="subtitle">Songs to help you engage with God</p>
+        <p class="subtitle">Recorded simply. Free to use.</p>
         <hr class="rule">
-
-        <!-- hand-pressed woodblock scene -->
-        <svg class="scene" viewBox="0 0 1000 440" role="img"
-             aria-label="A woodblock-style landscape of rain falling over a snow-capped mountain and pine forest at dusk.">
-          <defs>
-            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0"   stop-color="#e8cd86"/>
-              <stop offset="0.45" stop-color="#d98f57"/>
-              <stop offset="1"   stop-color="#8ca9bf"/>
-            </linearGradient>
-            <clipPath id="box"><rect x="0" y="0" width="1000" height="440"/></clipPath>
-
-            <!-- one seamless tile of rain (550 user-units tall, repeated and scrolled) -->
-            <g id="raintile" stroke="#ece2cb" stroke-width="2" opacity="0.5" stroke-linecap="round">
-              <path d="M40 10 l-12 50"/>  <path d="M120 60 l-12 50"/>  <path d="M200 20 l-12 50"/>
-              <path d="M300 80 l-12 50"/> <path d="M380 30 l-12 50"/>  <path d="M470 70 l-12 50"/>
-              <path d="M560 15 l-12 50"/> <path d="M650 90 l-12 50"/>  <path d="M740 25 l-12 50"/>
-              <path d="M820 75 l-12 50"/> <path d="M910 35 l-12 50"/>  <path d="M980 60 l-12 50"/>
-              <path d="M70 160 l-12 50"/> <path d="M160 210 l-12 50"/> <path d="M250 170 l-12 50"/>
-              <path d="M350 230 l-12 50"/><path d="M440 180 l-12 50"/> <path d="M540 220 l-12 50"/>
-              <path d="M630 165 l-12 50"/><path d="M720 225 l-12 50"/> <path d="M810 175 l-12 50"/>
-              <path d="M900 215 l-12 50"/><path d="M980 190 l-12 50"/>
-              <path d="M30 310 l-12 50"/> <path d="M130 360 l-12 50"/> <path d="M220 320 l-12 50"/>
-              <path d="M320 380 l-12 50"/><path d="M420 330 l-12 50"/> <path d="M520 370 l-12 50"/>
-              <path d="M620 315 l-12 50"/><path d="M710 375 l-12 50"/> <path d="M800 325 l-12 50"/>
-              <path d="M900 365 l-12 50"/><path d="M970 340 l-12 50"/>
-              <path d="M60 460 l-12 50"/> <path d="M150 510 l-12 50"/> <path d="M250 470 l-12 50"/>
-              <path d="M360 520 l-12 50"/><path d="M460 480 l-12 50"/> <path d="M560 520 l-12 50"/>
-              <path d="M660 470 l-12 50"/><path d="M760 515 l-12 50"/> <path d="M860 475 l-12 50"/>
-              <path d="M950 510 l-12 50"/>
-            </g>
-          </defs>
-
-          <g clip-path="url(#box)">
-            <rect width="1000" height="440" fill="url(#sky)"/>
-
-            <!-- sun -->
-            <g class="sun">
-              <circle cx="500" cy="150" r="74" fill="#e3b24a"/>
-              <circle cx="500" cy="150" r="74" fill="none" stroke="#5e2316" stroke-width="2" opacity="0.5"/>
-            </g>
-
-            <!-- far ridge -->
-            <path d="M0 250 L150 215 L300 245 L430 205 L560 240 L720 200 L880 238 L1000 215 L1000 440 L0 440 Z"
-                  fill="#7d97ad"/>
-
-            <!-- snow-capped peak (Shasta) -->
-            <path d="M330 250 L470 95 L520 140 L560 110 L700 250 Z" fill="#9e6b52"/>
-            <path d="M470 95 L520 140 L560 110 L595 145 L560 150 L535 132 L505 158 L478 130 L455 150 Z"
-                  fill="#ece2cb"/>
-            <path d="M330 250 L470 95 L520 140 L560 110 L700 250 Z"
-                  fill="none" stroke="#3a1c12" stroke-width="2.5" stroke-linejoin="round"/>
-
-            <!-- mid hill, rust -->
-            <path d="M0 300 L180 268 L360 300 L540 270 L760 305 L1000 272 L1000 440 L0 440 Z"
-                  fill="#b0492f"/>
-            <!-- foreground hill, deep rust -->
-            <path d="M0 360 L220 330 L470 365 L700 332 L1000 362 L1000 440 L0 440 Z"
-                  fill="#8c3622"/>
-
-            <!-- pine forest silhouettes -->
-            <g fill="#16100b">
-              <g id="pine">
-                <path d="M0 0 L13 26 L7 26 L18 50 L9 50 L22 78 L-22 78 L-9 50 L-18 50 L-7 26 L-13 26 Z"/>
-                <rect x="-3" y="78" width="6" height="12"/>
-              </g>
-              <use href="#pine" x="70"  y="300" transform="scale(0.85)"/>
-              <use href="#pine" x="150" y="290"/>
-              <use href="#pine" x="250" y="305" transform="scale(0.9)"/>
-              <use href="#pine" x="360" y="295" transform="scale(1.1)"/>
-              <use href="#pine" x="470" y="305"/>
-              <use href="#pine" x="585" y="292" transform="scale(0.95)"/>
-              <use href="#pine" x="690" y="305" transform="scale(1.15)"/>
-              <use href="#pine" x="800" y="296"/>
-              <use href="#pine" x="905" y="305" transform="scale(0.9)"/>
-              <use href="#pine" x="980" y="300" transform="scale(1.05)"/>
-            </g>
-
-            <!-- animated rain: two stacked copies of the tile, scrolled downward -->
-            <g class="rain">
-              <use href="#raintile" y="-550"/>
-              <use href="#raintile"/>
-            </g>
-
-            <!-- birds -->
-            <g class="birds" stroke="#16100b" stroke-width="2.5" fill="none" stroke-linecap="round">
-              <path d="M740 80 q10 -9 20 0 q10 -9 20 0"/>
-              <path d="M800 110 q7 -6 14 0 q7 -6 14 0"/>
-            </g>
-
-            <!-- inked border -->
-            <rect x="3" y="3" width="994" height="434" fill="none" stroke="#16100b" stroke-width="6"/>
-          </g>
-        </svg>
+        <p class="scroll-cue">Scroll</p>
       </div>
     </header>
 
@@ -214,6 +130,7 @@
       </div>
     </footer>
 
+    <script src="javascripts/pixel-bg.js"></script>
     <script>
       // gentle reveal-on-scroll
       (function () {
