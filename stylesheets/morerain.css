@@ -1,0 +1,330 @@
+/* ===========================================================
+   More Rain — free acoustic worship music
+   Art direction inspired by hand-pressed woodblock / vintage
+   national-park posters: black ground, cream frame, rust slab
+   titles, mustard + dusty-blue accents.
+   =========================================================== */
+
+:root {
+  --ink:        #100d0a;   /* near-black ground            */
+  --ink-2:      #19140f;   /* panel ground                 */
+  --rust:       #b0492f;   /* terracotta / rust red        */
+  --rust-deep:  #8c3622;   /* darker rust                  */
+  --cream:      #ece2cb;   /* parchment text               */
+  --cream-dim:  #c9bda1;   /* muted parchment              */
+  --gold:       #e3b24a;   /* mustard gold                 */
+  --blue:       #8ca9bf;   /* dusty sky blue               */
+  --sage:       #93a06a;   /* muted sage green             */
+  --line:       rgba(236,226,203,0.18);
+
+  --display: "Oswald", "Arial Narrow", sans-serif;
+  --body:    "Spectral", Georgia, "Times New Roman", serif;
+
+  --frame: clamp(10px, 2.2vw, 26px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  /* subtle pressed-paper grain */
+  background-image:
+    radial-gradient(rgba(255,255,255,0.020) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.35) 1px, transparent 1px);
+  background-size: 4px 4px, 5px 5px;
+  background-position: 0 0, 2px 2px;
+}
+
+/* ---- cream frame around the whole poster ------------------ */
+.frame {
+  position: fixed;
+  inset: var(--frame);
+  border: 2px solid var(--cream-dim);
+  pointer-events: none;
+  z-index: 50;
+  mix-blend-mode: screen;
+}
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(236,226,203,0.30);
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 clamp(22px, 6vw, 64px);
+}
+
+/* ============================ HERO ======================== */
+.hero {
+  position: relative;
+  padding: clamp(48px, 9vh, 110px) 0 clamp(30px, 6vh, 64px);
+  overflow: hidden;
+}
+
+.kicker {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  font-size: clamp(11px, 1.5vw, 15px);
+  font-weight: 500;
+  color: var(--blue);
+  margin: 0 0 18px;
+  padding-left: 0.5em;
+}
+
+.title {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.86;
+  margin: 0;
+  font-size: clamp(64px, 18vw, 200px);
+  color: var(--rust);
+  /* carved outline + drop, like the poster lettering */
+  text-shadow:
+     2px 0 0 var(--rust-deep),
+    -1px 0 0 var(--rust-deep),
+     0 3px 0 #5e2316,
+     0 0 1px rgba(0,0,0,0.4);
+}
+.title .line2 { color: var(--rust); display: block; }
+
+.subtitle {
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.34em;
+  font-size: clamp(13px, 2.4vw, 24px);
+  color: var(--cream);
+  margin: 22px 0 0;
+}
+
+.rule {
+  border: 0;
+  height: 3px;
+  background: var(--rust);
+  width: 110px;
+  margin: 26px 0;
+}
+
+/* hand-drawn linocut scene under the title */
+.scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 30px 0 0;
+  border: 2px solid var(--cream-dim);
+  background: #1c1712;
+}
+
+/* ============================ SECTIONS ==================== */
+section { position: relative; }
+
+.band {
+  padding: clamp(46px, 9vh, 96px) 0;
+  border-top: 1px solid var(--line);
+}
+.band--alt { background: var(--ink-2); }
+
+.eyebrow {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.42em;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold);
+  margin: 0 0 14px;
+}
+
+h2.section-title {
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+  font-size: clamp(34px, 6vw, 72px);
+  color: var(--cream);
+  margin: 0 0 28px;
+}
+
+.lead {
+  font-size: clamp(20px, 2.6vw, 28px);
+  line-height: 1.5;
+  color: var(--cream);
+  max-width: 26ch;
+}
+
+.prose {
+  max-width: 60ch;
+  color: var(--cream-dim);
+}
+.prose p { margin: 0 0 1.1em; }
+.prose strong { color: var(--cream); font-weight: 600; }
+.prose em { color: var(--gold); font-style: italic; }
+
+.verse {
+  font-style: italic;
+  color: var(--blue);
+  border-left: 3px solid var(--rust);
+  padding-left: 22px;
+  margin: 30px 0 0;
+  font-size: clamp(18px, 2.2vw, 22px);
+  max-width: 44ch;
+}
+.verse cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 12px;
+  color: var(--cream-dim);
+  margin-top: 12px;
+}
+
+/* two-column grid for vision */
+.cols {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 6vw, 70px);
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .cols { grid-template-columns: 1fr; gap: 28px; }
+  .lead { max-width: none; }
+}
+
+/* ============================ LISTEN ===================== */
+.player {
+  border: 2px solid var(--cream-dim);
+  margin: 6px 0 30px;
+  background: #000;
+  line-height: 0;
+}
+.player iframe { display: block; width: 100%; border: 0; }
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.btn {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--cream);
+  border: 2px solid var(--rust);
+  padding: 13px 24px;
+  background: transparent;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn:hover { background: var(--rust); color: var(--ink); transform: translateY(-2px); }
+.btn--gold { border-color: var(--gold); }
+.btn--gold:hover { background: var(--gold); }
+.btn--blue { border-color: var(--blue); }
+.btn--blue:hover { background: var(--blue); }
+.btn small { font-size: 11px; opacity: 0.7; letter-spacing: 0.14em; }
+
+/* release card */
+.release {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  border: 1px solid var(--line);
+  padding: 24px;
+  margin-bottom: 34px;
+  background: var(--ink);
+}
+.release .badge {
+  flex: 0 0 auto;
+  width: 96px; height: 96px;
+  border: 2px solid var(--gold);
+  display: grid; place-items: center;
+  color: var(--gold);
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+}
+.release h3 {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: clamp(20px, 3vw, 28px);
+  margin: 0 0 6px;
+  color: var(--cream);
+}
+.release p { margin: 0; color: var(--cream-dim); font-size: 16px; }
+@media (max-width: 560px) {
+  .release { flex-direction: column; align-items: flex-start; text-align: left; }
+}
+
+/* ============================ CC / FOOTER ================ */
+.cc {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  max-width: 60ch;
+}
+.cc .mark {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--sage);
+  border: 2px solid var(--sage);
+  border-radius: 50%;
+  width: 58px; height: 58px;
+  flex: 0 0 auto;
+  display: grid; place-items: center;
+  letter-spacing: -0.04em;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 40px 0 60px;
+  text-align: center;
+  color: var(--cream-dim);
+  font-size: 14px;
+}
+footer .mark-title {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--rust);
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+footer a { color: var(--blue); }
+
+a { color: var(--gold); }
+a:hover { color: var(--cream); }
+
+/* reveal-on-scroll */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
